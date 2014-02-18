@@ -18,4 +18,8 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
+
+    public function helloworldAction(){
+    	return new ViewModel(array('text' => 'Hello World!!!'));
+    }
 }
