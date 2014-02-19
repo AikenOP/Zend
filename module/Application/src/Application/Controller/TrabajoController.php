@@ -22,7 +22,8 @@ class TrabajoController extends AbstractActionController
     public function otroAction(){
 
     	$id = (int) $this->params()->fromRoute('id',null);
-    	return new ViewModel(array('id' => $id));
+    	$path = $this->getRequest()->getBaseUrl();
+    	return new ViewModel(array('id' => $id, 'path' => $path));
     }
 
 }
