@@ -12,19 +12,20 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class TrabajoController extends AbstractActionController
+class TestController extends AbstractActionController
 {
     public function indexAction()
     {
+    	$this->layout('layout/test');
+    	$this->layout()->header = 'Header Dinamico'; // envia parametros al Layout
+    	$this->layout()->title = 'Title Dinamico'; // envia parametro title al layout
         return new ViewModel();
     }
 
-    public function otroAction(){
-
-    	$id = (int) $this->params()->fromRoute('id',null);
-    	$path = $this->getRequest()->getBaseUrl();
-     	//$this->redirect()->toUrl($path.'/application/'); //redirecciona al index
-    	return new ViewModel(array('id' => $id, 'path' => $path));
+    public function ajaxAction()
+    {
+    	$view = new ViewModel();
+    	$view->setTerminal(true); //desestima el uso de cualquier layout(util para ajax)
+    	return $view;
     }
-
 }
